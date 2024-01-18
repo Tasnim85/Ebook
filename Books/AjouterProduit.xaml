@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Books.AjouterProduit">
+    <ContentPage.Content>
+        <StackLayout Spacing="5" Padding="50,90,50,50">
+            <Label Text="ID" FontSize="Medium" IsEnabled="False" />
+            <Entry x:Name="txtId" FontSize="Medium" IsEnabled="False" />
+            <Label Text="Nom produit" FontSize="Medium" />
+            <Entry x:Name="txtNom" FontSize="Medium" />
+            <Label Text="Description" FontSize="Medium" />
+            <Entry x:Name="txtDescription" FontSize="Medium" />
+            <Label Text="Prix" FontSize="Medium" />
+            <Entry x:Name="txtPrix" FontSize="Medium" />
+            <Label Text="Url image" FontSize="Medium" />
+            <Entry x:Name="txtURLimage" FontSize="Medium" />
+            <Picker x:Name="categoryPicker" Title="Choisir Categorie" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Sauvegarder" Clicked="Btnadd_Clicked" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

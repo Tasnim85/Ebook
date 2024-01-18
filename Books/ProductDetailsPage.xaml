@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Books.ProductDetailsPage"
+             Title="{Binding Nom}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame HasShadow="True" BorderColor="White" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center"  Margin="10" WidthRequest="250" HeightRequest="300">
+                    <Image Source="{Binding UrlImage}" Aspect="AspectFill" />
+                </Frame>
+                <StackLayout Margin="10,20,10,20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding Nom}" FontSize="Title" FontAttributes="Bold" TextColor="#1a1a1a" />
+                        <Label Grid.Column="2" Text="{Binding Prix, StringFormat='{0:C1}'}" FontSize="Subtitle"  TextColor="#333333"  />
+                    </Grid>
+                    <Label Padding="0,10,0,0" Text="{Binding Description}" FontSize="Medium" />
+                </StackLayout>
+                <Label  FontAttributes="Bold"  Text="Quantité:" Padding="15,30,0,0" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="#1a1a1a" FontSize="Medium"/>
+
+                <StackLayout Grid.Row="5"
+                     Grid.ColumnSpan="2"
+                     Orientation="Horizontal" 
+                     HorizontalOptions="Start"
+                     Padding="15,0,0,0">
+                    <Button Text="-" VerticalOptions="Center"  HorizontalOptions="Center" WidthRequest="40" Clicked="Less"/>
+                    <Label Text="1" x:Name="QuantityLabel"  HorizontalOptions="Center" VerticalTextAlignment="Center"/>
+                    <Button Text="+" VerticalOptions="Center" WidthRequest="40" Clicked="More"/>
+                        
+                </StackLayout>
+                <StackLayout Padding="15,50,0,0">
+                <Button Text="Ajouter au panier"
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="#333333"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="5"
+                    WidthRequest="300"
+                    Clicked="Buy"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

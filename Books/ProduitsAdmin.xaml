@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Books.ProduitsAdmin"
+             Title="Produits">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ajouter" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+         
+                <CollectionView
+                    x:Name="listProduits"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                        <StackLayout>
+                                <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Supprimer" BackgroundColor="Red" CommandParameter="{Binding .}" Clicked="SwipeItem_Clicked"/>
+                                        <SwipeItem IsDestructive="True" Text="Fermer" BackgroundColor="Green"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid Padding="5">
+                                    <Frame CornerRadius="10" HasShadow="True">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Grid.RowSpan="1" Source="{Binding UrlImage}" Aspect="AspectFill" HeightRequest="80" WidthRequest="60"></Image>
+                                            <StackLayout>
+                                                <Label Grid.Column="1" Text="{Binding Nom}" FontAttributes="Bold"></Label>
+                                                <StackLayout  Padding="0,40,0,0">
+                                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Prix, StringFormat='{0:C1}'}" ></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand">
+                                                    <Image Source="edit.png" Grid.Column="3" WidthRequest="20" HeightRequest="30" VerticalOptions="End">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}" Tapped="TapGestureRecognizer_Tapped"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </SwipeView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

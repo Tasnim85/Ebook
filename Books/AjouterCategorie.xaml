@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Books.AjouterCategorie">
+    <ContentPage.Content>
+        <StackLayout Spacing="5" Padding="50,90,50,50">
+            <Label Text="ID" FontSize="Medium" IsEnabled="False" />
+            <Entry x:Name="txtId" FontSize="Medium" IsEnabled="False" />
+            <Label Text="Nom categorie" FontSize="Medium" />
+            <Entry x:Name="txtNom" FontSize="Medium" />
+            <StackLayout Orientation="Horizontal">
+
+                <Button Text="Sauvegarder" Clicked="Button_Clicked" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

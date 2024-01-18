@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Books.CommandeClient">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="bin.png" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <RefreshView x:Name="refreshView" Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+
+            <StackLayout Margin="0">
+                <CollectionView x:Name="lvPanier" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame CornerRadius="10" HasShadow="True" Margin="10">
+                                    <Grid>
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                            <Image Source="{Binding UrlImage}" Aspect="AspectFill" HeightRequest="80" WidthRequest="50" />
+                                            <StackLayout>
+                                                <Label Text="{Binding NomProduit}" FontAttributes="Bold" />
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Quantite}" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <Image Source="remove.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" VerticalOptions="Start" Margin="0,0,0,0">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}" Tapped="TapGestureRecognizer_Tapped"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label Text="{Binding PrixTotale}" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Margin="0,0,0,0"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Frame CornerRadius="10" HasShadow="True" Margin="10">
+                    <StackLayout>
+                        <Label Text="Facture" FontSize="Title"  />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Total panier" FontSize="Subtitle" HorizontalOptions="Start"/>
+                            <StackLayout HorizontalOptions="EndAndExpand" >
+                                <Label x:Name="Total" Text="" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Frais de livraison" FontSize="Subtitle" HorizontalOptions="Start"/>
+                            <StackLayout HorizontalOptions="EndAndExpand" >
+                                <Label Text="10€" />
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView HeightRequest="1" BackgroundColor="DarkGray" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Total" FontSize="Subtitle" HorizontalOptions="Start"/>
+                            <StackLayout HorizontalOptions="EndAndExpand" >
+                                <Label x:Name="TotalFacture" Text="" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Button                 
+                 VerticalOptions="StartAndExpand"            
+                Text="Valider commande"
+                TextColor="DarkGray"
+                BackgroundColor="#333333"
+                BorderWidth="1.5"
+                Padding="30,0,30,0"
+                CornerRadius="15"
+                Clicked="Button_Clicked"
+                ></Button>
+                
+            </StackLayout>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

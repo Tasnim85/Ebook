@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Books.CategoriesAdmin"
+             Title="Categories">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ajouter" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="listCategories">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Supprimer" BackgroundColor="Red" CommandParameter="{Binding .}" Clicked="SwipeItem_Clicked" />
+                                        <SwipeItem IsDestructive="True" Text="Fermer" BackgroundColor="Green"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid>
+                                    <StackLayout Orientation="Horizontal" Padding="30,0,30,0">
+                                        <Label Grid.Column="0" Text="{Binding Id}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+                                        <Label Grid.ColumnSpan="1" Grid.Column="1" Text="{Binding Nom}" FontSize="Default" VerticalOptions="CenterAndExpand" />
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                            <Image Source="edit.png" Grid.Column="2" WidthRequest="18" HeightRequest="18" VerticalOptions="End">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding .}" Tapped="TapGestureRecognizer_Tapped"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
